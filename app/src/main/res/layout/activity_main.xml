@@ -12,7 +12,7 @@
     tools:context=".MainActivity">
 
     <androidx.cardview.widget.CardView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp">
 
@@ -30,7 +30,7 @@
                 app:layout_constraintBottom_toTopOf="@+id/button"
                 app:layout_constraintDimensionRatio="1:1"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.03"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.51"
@@ -54,15 +54,14 @@
                 android:layout_height="wrap_content"
 
                 android:gravity="left"
-                android:lines="5"
-                android:text="Ear Phones,Ear Phones\nEar PhonesEar Phones"
+                android:text="Ear Phones high quality bluetoothEar Phones high quality bluetooth \n "
                 android:textStyle="bold"
                 app:layout_constraintBottom_toTopOf="@+id/textView"
                 app:layout_constraintEnd_toStartOf="@+id/textView5"
-                app:layout_constraintHorizontal_bias=".05"
                 app:layout_constraintStart_toEndOf="@+id/imageView"
                 app:layout_constraintTop_toTopOf="@+id/imageView"
-                app:layout_constraintVertical_chainStyle="packed" />
+                app:layout_constraintVertical_chainStyle="packed"
+                app:layout_constraintWidth_percent=".60" />
 
             <TextView
                 android:id="@+id/textView"
@@ -92,14 +91,14 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:gravity="end"
-                android:text="Max 5"
+                android:text="Max buy 5"
                 app:layout_constraintBottom_toTopOf="@+id/linearLayout"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.97"
+                app:layout_constraintHorizontal_bias="1.00"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_chainStyle="packed"
-                app:layout_constraintWidth_percent=".2" />
+                app:layout_constraintWidth_percent=".22" />
 
             <LinearLayout
                 android:id="@+id/linearLayout"
@@ -110,7 +109,7 @@
                 app:layout_constraintBottom_toTopOf="@+id/textView4"
                 app:layout_constraintStart_toStartOf="@+id/textView5"
                 app:layout_constraintTop_toBottomOf="@+id/textView5"
-                app:layout_constraintWidth_percent=".20">
+                app:layout_constraintWidth_percent=".22">
 
 
                 <TextView
@@ -152,21 +151,42 @@
                 app:layout_constraintEnd_toEndOf="@+id/linearLayout"
                 app:layout_constraintStart_toStartOf="@+id/linearLayout"
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-                app:layout_constraintWidth_percent=".20" />
+                app:layout_constraintWidth_percent=".22" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.15" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent=".78"
+
+                />
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
+
+
+
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
 
         >
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="3dp"
             android:background="@color/pink"
-            >
+            android:padding="3dp">
+
             <ImageView
                 android:id="@+id/imageView2"
                 android:layout_width="0dp"
@@ -175,7 +195,7 @@
                 app:layout_constraintBottom_toTopOf="@+id/button2"
                 app:layout_constraintDimensionRatio="1:1"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.03"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.51"
@@ -197,17 +217,16 @@
                 android:id="@+id/textView32"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-
                 android:gravity="left"
-                android:lines="5"
-                android:text="Ear Phones,Ear Phones\nEar PhonesEar Phones"
+                android:text="Ear Phones high quality bluetooth"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toTopOf="@+id/textView10"
                 app:layout_constraintEnd_toStartOf="@+id/textView52"
-                app:layout_constraintHorizontal_bias=".05"
+                app:layout_constraintHorizontal_bias=".50"
                 app:layout_constraintStart_toEndOf="@+id/imageView2"
                 app:layout_constraintTop_toTopOf="@+id/imageView2"
-                app:layout_constraintVertical_chainStyle="packed" />
+                app:layout_constraintVertical_chainStyle="packed"
+                app:layout_constraintWidth_percent=".60" />
 
             <TextView
                 android:id="@+id/textView10"
@@ -237,14 +256,14 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:gravity="end"
-                android:text="Max 5"
+                android:text="Max buy 5"
                 app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.97"
+                app:layout_constraintHorizontal_bias="1.00"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_chainStyle="packed"
-                app:layout_constraintWidth_percent=".2" />
+                app:layout_constraintWidth_percent=".22" />
 
             <LinearLayout
                 android:id="@+id/linearLayout2"
@@ -255,7 +274,7 @@
                 app:layout_constraintBottom_toTopOf="@+id/textView42"
                 app:layout_constraintStart_toStartOf="@+id/textView52"
                 app:layout_constraintTop_toBottomOf="@+id/textView52"
-                app:layout_constraintWidth_percent=".20">
+                app:layout_constraintWidth_percent=".22">
 
 
                 <TextView
@@ -297,7 +316,7 @@
                 app:layout_constraintEnd_toEndOf="@+id/linearLayout2"
                 app:layout_constraintStart_toStartOf="@+id/linearLayout2"
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
-                app:layout_constraintWidth_percent=".20" />
+                app:layout_constraintWidth_percent=".22" />
 
             <androidx.constraintlayout.widget.Barrier
                 android:id="@+id/barrier4"
