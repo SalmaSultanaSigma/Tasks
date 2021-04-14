@@ -53,7 +53,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun onItemRemove(position: Int) {
-        item.removeAt(position)
+        item2.removeAt(position)
         adpter.notifyItemRemoved(position)
     }
 
@@ -70,16 +70,7 @@ class MainActivity : AppCompatActivity() {
         fab_addItem=findViewById(R.id.floatingButtin)
         addedButton=findViewById(R.id.addedButton)
 
-        addedButton.setOnClickListener {
-            addedButton.setBackgroundColor(Color.RED)
 
-            item.add(Item(
-                    R.drawable.watch_one,
-                    "Wrist watch for ladies one ADDED",
-                    "2000 taka per piece ADDED",
-                    "Buy 3 pieces get 1 piece ADDED "
-            ))
-        }
 
         fab_addItem.setOnClickListener {
 
@@ -281,7 +272,7 @@ class MainActivity : AppCompatActivity() {
             updateBtn.text = "Add item"
 
             updateBtn.setOnClickListener {
-                item.add(Item(R.drawable.watch_one,"${name.text}", "${price.text}","${offer.text}"))
+                item2.add(Item(R.drawable.watch_one,"${name.text}", "${price.text}","${offer.text}"))
                 Toast.makeText(applicationContext,"Updated",Toast.LENGTH_SHORT).show()
                 adpter.notifyItemChanged(position)
                 dialog?.dismiss()
@@ -290,14 +281,14 @@ class MainActivity : AppCompatActivity() {
             }
         }else{
             title.text = "Update Product"
-            name.setText(item[position].getName())
-            price.setText(item[position].getPrice())
-            offer.setText(item[position].getOffer())
+            name.setText(item2[position].getName())
+            price.setText(item2[position].getPrice())
+            offer.setText(item2[position].getOffer())
 
             updateBtn.setOnClickListener {
                 val newItem =  Item(R.drawable.watch_one,"${name.text}", "${price.text}","${offer.text}")
 
-                item[position] = newItem
+                item2[position] = newItem
                 Toast.makeText(applicationContext,"Updated",Toast.LENGTH_SHORT).show()
                 adpter.notifyItemChanged(position)
                 dialog?.dismiss()
