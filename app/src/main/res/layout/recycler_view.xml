@@ -6,12 +6,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="104dp"
-        tools:layout_editor_absoluteY="142dp" />
+
+    <TextView
+        android:id="@+id/noItemTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="no item"
+        android:textSize="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/recyclerView"
+        app:layout_constraintTop_toTopOf="@+id/recyclerView" />
+
+
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
 
@@ -25,6 +32,28 @@
         app:layout_constraintTop_toTopOf="parent"
         android:src="@drawable/ic_baseline_add_24"
         app:layout_constraintVertical_bias="0.946" />
+
+    <Button
+        android:id="@+id/addedButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="added"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/recyclerView"
+        app:layout_constraintHorizontal_bias="0.247"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/recyclerView"
+        app:layout_constraintVertical_bias="0.931" />
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        tools:layout_editor_absoluteX="-52dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

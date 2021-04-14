@@ -37,7 +37,7 @@ class RecyclerAdapter(
 
         init {
             itemView.setOnClickListener {
-                itemView.setBackgroundColor(Color.BLUE)
+                //itemView.setBackgroundColor(Color.BLUE)
                 onItemUpdate(adapterPosition)
 
             }
@@ -52,8 +52,23 @@ class RecyclerAdapter(
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val v:View=LayoutInflater.from(parent.context).inflate(R.layout.card_view, parent, false)
-        return ViewHolder(v)
+        val view: View = if(viewType==0) {
+            LayoutInflater.from(parent.context).inflate(R.layout.card_view, parent, false);
+
+        } else {
+            LayoutInflater.from(parent.context).inflate(R.layout.card_view2, parent, false);
+
+        }
+
+        return ViewHolder(view)
+
+    }
+
+    override fun getItemViewType(position: Int): Int {
+        return if(position % 2 ==0 )
+            0;
+        else
+            1;
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {

@@ -1,8 +1,11 @@
 package com.example.constraintlayouttask
 
 import android.content.ClipData
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
@@ -18,8 +21,11 @@ class MainActivity : AppCompatActivity() {
     lateinit var adpter: RecyclerAdapter
     lateinit var recyclerView : RecyclerView
     private lateinit var item:ArrayList<Item>
+    private lateinit var item2:ArrayList<Item>
 
     lateinit var fab_addItem : FloatingActionButton
+    lateinit var addedButton: Button
+    lateinit var no_item_tv:TextView
 
 
     private lateinit var binding: RecyclerViewBinding
@@ -27,7 +33,7 @@ class MainActivity : AppCompatActivity() {
     private val recyclerViewAdapter by lazy {
 
         RecyclerAdapter(
-            item,this,
+            item2,this,
             {position ->
                 onItemUpdate(position)
             }
@@ -60,6 +66,28 @@ class MainActivity : AppCompatActivity() {
         binding = RecyclerViewBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        recyclerView=findViewById(R.id.recyclerView)
+        fab_addItem=findViewById(R.id.floatingButtin)
+        addedButton=findViewById(R.id.addedButton)
+
+        addedButton.setOnClickListener {
+            addedButton.setBackgroundColor(Color.RED)
+
+            item.add(Item(
+                    R.drawable.watch_one,
+                    "Wrist watch for ladies one ADDED",
+                    "2000 taka per piece ADDED",
+                    "Buy 3 pieces get 1 piece ADDED "
+            ))
+        }
+
+        fab_addItem.setOnClickListener {
+
+            updateItemValueFromList(-1)
+
+
+        }
+
 
         initListItem()
 
@@ -70,25 +98,36 @@ class MainActivity : AppCompatActivity() {
         )
 
 
-        adpter=recyclerViewAdapter
+        adpter= recyclerViewAdapter
         recyclerView.adapter=adpter
+
+        addedButton.setOnClickListener {
+            var i = 0
+            if (item2.size <= item.size) {
+                no_item_tv.visibility = View.GONE
+                item2.add(item[i])
+                item2.add(item[i + 1])
+                item2.add(item[i + 2])
+                i += 2
+                Log.d("TAG", "onCreate: " + item2.size)
+            } else {
+                Toast.makeText(applicationContext, "no item on list", Toast.LENGTH_SHORT).show()
+            }
+            adpter.notifyDataSetChanged()
+
+
+        }
 
 
     }
 
     public fun initListItem(){
 
-        recyclerView=findViewById(R.id.recyclerView)
-        fab_addItem=findViewById(R.id.floatingButtin)
-        fab_addItem.setOnClickListener {
-
-            updateItemValueFromList(-1)
 
 
-        }
-
-
-       item= ArrayList()
+        no_item_tv=findViewById(R.id.noItemTV)
+        item= ArrayList()
+        item2=ArrayList()
 
         item.add(Item(
             R.drawable.watch_one,
@@ -152,6 +191,69 @@ class MainActivity : AppCompatActivity() {
 
 
             )
+        )
+        item.add(Item(
+                R.drawable.watch_one,
+                "Wrist watch for ladies one",
+                "2000 taka per piece",
+                "Buy 3 pieces get 1 piece "
+        ))
+        item.add(
+                Item(
+                        R.drawable.watch_two,
+                        "Wrist watch for ladies two",
+                        "2000 taka per piece",
+                        "Buy 3 pieces get 1 piece "
+                )
+        )
+        item.add(
+                Item(
+                        R.drawable.watch_three,
+                        "Wrist watch for ladies three",
+                        "2000 taka per piece",
+                        "Buy 3 pieces get 1 piece "
+                )
+        )
+
+        item.add(
+                Item(
+                        R.drawable.watch_four,
+                        "Wrist watch for ladies four",
+                        "2000 taka per piece",
+                        "Buy 3 pieces get 1 piece "
+                )
+        )
+        item.add(
+                Item(
+                        R.drawable.watch_five,
+                        "Wrist watch for ladies five",
+                        "2000 taka per piece",
+                        "Buy 3 pieces get 1 piece "
+                )
+        )
+        item.add(
+                Item(
+                        R.drawable.watch_six,
+                        "Wrist watch for ladies six",
+                        "2000 taka per piece",
+                        "Buy 3 pieces get 1 piece "
+                )
+        )
+        item.add(Item(
+                R.drawable.watch_seven,
+                "Wrist watch for ladies seven",
+                "2000 taka per piece",
+                "Buy 3 pieces get 1 piece "
+        ))
+        item.add(
+                Item(
+                        R.drawable.watch_eight,
+                        "Wrist watch for ladies eight",
+                        "2000 taka per piece",
+                        "Buy 3 pieces get 1 piece "
+
+
+                )
         )
 
     }
