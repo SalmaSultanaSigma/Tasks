@@ -1,23 +1,16 @@
 package com.example.constraintlayouttask
 
-import android.content.ClipData
-import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import androidx.core.view.isGone
-import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.constraintlayouttask.databinding.ActivityMainBinding
 import com.example.constraintlayouttask.databinding.RecyclerViewBinding
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class MainActivity : AppCompatActivity() {
     lateinit var adpter: RecyclerAdapter
@@ -30,8 +23,8 @@ class MainActivity : AppCompatActivity() {
 
         RecyclerAdapter(
             item2,this,
-            {position ->
-                onItemUpdate(position)
+            {position, view ->
+                onItemUpdate(position, view)
             }
             ,{
                     position ->
@@ -53,8 +46,27 @@ class MainActivity : AppCompatActivity() {
         adpter.notifyItemRemoved(position-1)
     }
 
-    private fun onItemUpdate(position: Int) {
-        updateItemValueFromList(position)
+    private fun onItemUpdate(position: Int, view: View) {
+        //updateItemValueFromList(position)
+       bottomSheet(position,view)
+    }
+
+    private fun bottomSheet(position: Int,view: View) {
+
+
+
+
+        view.setOnClickListener {
+            BottomSheetDialog(position,item2.get(position).getName().toString()).show(
+                    supportFragmentManager,
+                    "Tag"
+            )
+        }
+    }
+
+    private fun detailsOfItemPosition(position: Int) {
+
+
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -101,14 +113,8 @@ class MainActivity : AppCompatActivity() {
 
             adpter.notifyDataSetChanged()
 
+        }
 
-        }
-        binding.buttonSheetStart.setOnClickListener {
-            BottomSheetDialog().show(
-                    supportFragmentManager,
-                    "Tag"
-            )
-        }
     }
 
     public fun initListItem(){

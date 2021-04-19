@@ -16,7 +16,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 class RecyclerAdapter(
     private val itemList: List<Item>,
     private val mContext: Context,
-    private val onItemUpdate: (position: Int) -> Unit,
+    private val onItemUpdate: (position: Int, itemView: View) -> Unit,
     private val onItemRemove: (position: Int) -> Unit,
     private val onItemAdd: (position: Int) -> Unit
 
@@ -38,7 +38,8 @@ class RecyclerAdapter(
         init {
             itemView.setOnClickListener {
                 //itemView.setBackgroundColor(Color.BLUE)
-                onItemUpdate(adapterPosition)
+                onItemUpdate(adapterPosition,itemView)
+
 
             }
             cross.setOnClickListener {
