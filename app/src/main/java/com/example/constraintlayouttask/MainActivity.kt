@@ -11,6 +11,8 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.core.view.isGone
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.constraintlayouttask.databinding.ActivityMainBinding
@@ -21,15 +23,9 @@ class MainActivity : AppCompatActivity() {
     lateinit var adpter: RecyclerAdapter
     lateinit var recyclerView : RecyclerView
     private lateinit var item:ArrayList<Item>
-    private lateinit var item2:ArrayList<Item>
-
-    lateinit var fab_addItem : FloatingActionButton
-    lateinit var addedButton: Button
-    lateinit var no_item_tv:TextView
-
+    private var item2:ArrayList<Item> =ArrayList()
 
     private lateinit var binding: RecyclerViewBinding
-
     private val recyclerViewAdapter by lazy {
 
         RecyclerAdapter(
@@ -54,7 +50,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun onItemRemove(position: Int) {
         item2.removeAt(position)
-        adpter.notifyItemRemoved(position)
+        adpter.notifyItemRemoved(position-1)
     }
 
     private fun onItemUpdate(position: Int) {
@@ -66,57 +62,60 @@ class MainActivity : AppCompatActivity() {
         binding = RecyclerViewBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        recyclerView=findViewById(R.id.recyclerView)
-        fab_addItem=findViewById(R.id.floatingButtin)
-        addedButton=findViewById(R.id.addedButton)
-
-
-
-        fab_addItem.setOnClickListener {
-
-            updateItemValueFromList(-1)
-
-
-        }
-
-
-        initListItem()
+        onClickListener()
+        //initListItem()
 
         binding.recyclerView.layoutManager = LinearLayoutManager(
             applicationContext,
             LinearLayoutManager.VERTICAL,
             false
         )
-
-
         adpter= recyclerViewAdapter
-        recyclerView.adapter=adpter
+        binding.recyclerView.adapter=adpter
 
-        addedButton.setOnClickListener {
-            var i = 0
-            if (item2.size <= item.size) {
-                no_item_tv.visibility = View.GONE
-                item2.add(item[i])
-                item2.add(item[i + 1])
-                item2.add(item[i + 2])
-                i += 2
-                Log.d("TAG", "onCreate: " + item2.size)
-            } else {
-                Toast.makeText(applicationContext, "no item on list", Toast.LENGTH_SHORT).show()
+        //recyclerView.scrollToPosition(item2.size+1)
+
+    }
+
+    private fun onClickListener() {
+        binding.floatingButtin.setOnClickListener {
+
+            updateItemValueFromList(-1)
+
+
+        }
+        var buttonClick=1
+
+        binding.addedButton.setOnClickListener {
+
+            for (i in 0..9){
+                var k=i+buttonClick
+                item2.add(Item(
+                        R.drawable.watch_two,
+                        "Wrist watch for ladies $k",
+                        "2000 taka per piece",
+                        "Buy 3 pieces get 1 piece button clicked $buttonClick "
+                ))
             }
+            buttonClick+=10
+
             adpter.notifyDataSetChanged()
 
 
         }
-
-
+        binding.buttonSheetStart.setOnClickListener {
+            BottomSheetDialog().show(
+                    supportFragmentManager,
+                    "Tag"
+            )
+        }
     }
 
     public fun initListItem(){
 
 
 
-        no_item_tv=findViewById(R.id.noItemTV)
+        //binding.noItemTV=findViewById(R.id.noItemTV)
         item= ArrayList()
         item2=ArrayList()
 
