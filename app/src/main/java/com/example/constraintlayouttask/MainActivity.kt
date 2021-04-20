@@ -8,6 +8,8 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.navigation.findNavController
+import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.constraintlayouttask.databinding.RecyclerViewBinding
@@ -48,25 +50,13 @@ class MainActivity : AppCompatActivity() {
 
     private fun onItemUpdate(position: Int, view: View) {
         //updateItemValueFromList(position)
-       bottomSheet(position,view)
-    }
-
-    private fun bottomSheet(position: Int,view: View) {
-
-
-
-
+       //bottomSheet(position,view)
         view.setOnClickListener {
-            BottomSheetDialog(position,item2.get(position).getName().toString()).show(
-                    supportFragmentManager,
-                    "Tag"
+            BottomSheetDialog(position+1,item2.get(position).getName().toString()).show(
+                supportFragmentManager,
+                "Tag"
             )
         }
-    }
-
-    private fun detailsOfItemPosition(position: Int) {
-
-
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -87,7 +77,14 @@ class MainActivity : AppCompatActivity() {
 
         //recyclerView.scrollToPosition(item2.size+1)
 
+        //setupActionBarWithNavController(findNavController(R.id.firstFragment))
+
     }
+
+//    override fun onSupportNavigateUp(): Boolean {
+//        val navController =findNavController(R.id.firstFragment)
+//        return navController.navigateUp()|| super.onSupportNavigateUp()
+//    }
 
     private fun onClickListener() {
         binding.floatingButtin.setOnClickListener {
